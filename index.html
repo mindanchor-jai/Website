@@ -101,13 +101,13 @@
   .hero-visual{
     position:relative; height:460px; border:1px solid var(--line-soft);
     background-image:url('assets/hero-visual.jpg'), radial-gradient(circle at 60% 30%, rgba(211,172,92,0.14), transparent 60%), linear-gradient(160deg, var(--navy-850), var(--navy-950));
-    background-size:cover; background-position:center;
+    background-size:contain; background-position:center;
   }
 
   /* Generic image-slot pattern: real photo layered over a gradient fallback so an
      unset/missing asset never breaks the layout — drop a file at the given path
      and it fills in automatically, no code changes needed. */
-  .img-slot{background-size:cover; background-position:center; background-repeat:no-repeat;}
+  .img-slot{background-size:contain; background-position:center; background-repeat:no-repeat;}
 
   /* ABOUT */
   .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;}
