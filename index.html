@@ -207,10 +207,18 @@
     display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; padding:22px;
     position:relative;
   }
-  .pod-cover::before{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(0deg, rgba(5,7,13,0.82) 0%, rgba(5,7,13,0) 55%);
+
+  .pod-cover{
+    aspect-ratio:1/1;
+    border:1px solid var(--line);
+    background-image:url('PD E.png');
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color:var(--navy-950);
+    position:relative;
   }
+  
   .pod-cover .cover-tag{position:relative; font-family:var(--serif); font-size:20px; color:var(--gold-300); letter-spacing:0.02em;}
   .pod-cover .cover-sub{position:relative; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted-soft); margin-top:6px;}
   .pod-ep .meta-line{font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-400); font-weight:600; margin-bottom:12px;}
@@ -525,11 +533,7 @@
           </a>
         </div>
       </div>
-      <div class="pod-cover">
-        <div class="cover-tag">MIND ANCHOR</div>
-        <div class="cover-sub">Podcast</div>
-        <!-- Drop your real cover art at assets/podcast-cover.jpg — it layers over this label automatically. -->
-      </div>
+      
       <div class="pod-ep">
         <div class="meta-line">Latest Episode</div>
         <h3>The Catalyst Is Not the Cause.</h3>
