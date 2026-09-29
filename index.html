@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mind Anchor - Happening Beneath the Surface</title>
+<title>Mind Anchor — Happening Beneath the Surface</title>
 <meta name="description" content="Mind Anchor explores the patterns behind how we think, feel, react, decide, and understand the world around us.">
-<link rel="icon" href="icon_small.png">
+<link rel="icon" href="assets/icon_small.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -99,8 +99,8 @@
   .hero p{margin-top:26px; max-width:46ch; font-size:18px; color:var(--muted);}
   .hero .btn{margin-top:38px;}
   .hero-visual{
-    position:relative; height:460px; border:1px solid var(--line-soft);
-    background-image:url('hero-visual.jpg'), radial-gradient(circle at 60% 30%, rgba(211,172,92,0.14), transparent 60%), linear-gradient(160deg, var(--navy-850), var(--navy-950));
+    position:relative; height:460px; border:1px solid var(--line-soft); overflow:hidden;
+    background-image:radial-gradient(circle at 60% 30%, rgba(211,172,92,0.14), transparent 60%), linear-gradient(160deg, var(--navy-850), var(--navy-950));
     background-size:cover; background-position:center;
   }
 
@@ -108,6 +108,7 @@
      unset/missing asset never breaks the layout — drop a file at the given path
      and it fills in automatically, no code changes needed. */
   .img-slot{background-size:cover; background-position:center; background-repeat:no-repeat;}
+  .img-fit{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; z-index:0; display:block;}
 
   /* ABOUT */
   .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;}
@@ -137,7 +138,7 @@
     overflow:hidden;
   }
   .feature-visual::before{
-    content:""; position:absolute; inset:0;
+    content:""; position:absolute; inset:0; z-index:1;
   }
   .feature-visual.has-image::before{
     background:linear-gradient(0deg, rgba(5,7,13,0.92) 0%, rgba(5,7,13,0.55) 42%, rgba(5,7,13,0.1) 70%);
@@ -145,10 +146,10 @@
   .feature-visual:not(.has-image)::before{
     background:radial-gradient(circle at 75% 20%, rgba(211,172,92,0.18), transparent 55%);
   }
-  .feature-visual .tag{position:relative; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-400); font-weight:600; margin-bottom:14px;}
-  .feature-visual h3{position:relative; font-size:30px; max-width:15ch; margin-bottom:12px;}
-  .feature-visual p{position:relative; font-size:15px; max-width:38ch;}
-  .feature-visual .orbit{position:absolute; top:-60px; right:-60px; width:260px; height:260px; opacity:0.5;}
+  .feature-visual .tag{position:relative; z-index:2; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-400); font-weight:600; margin-bottom:14px;}
+  .feature-visual h3{position:relative; z-index:2; font-size:30px; max-width:15ch; margin-bottom:12px;}
+  .feature-visual p{position:relative; z-index:2; font-size:15px; max-width:38ch;}
+  .feature-visual .orbit{position:absolute; top:-60px; right:-60px; width:260px; height:260px; opacity:0.5; z-index:1;}
   .feature.reverse{grid-template-columns:1.15fr 0.85fr;}
   .feature.reverse .feature-text{padding-right:0; padding-left:60px; order:2;}
   .feature.reverse .feature-visual{order:1;}
@@ -207,17 +208,9 @@
   .pod-plat:hover{border-color:var(--gold-400); color:var(--gold-300);}
   .pod-plat svg{width:16px; height:16px;}
   .pod-cover{
-    aspect-ratio:1/1; border:1px solid var(--line);
-    background-image:url('podcast-cover.jpg'), radial-gradient(circle at 50% 30%, rgba(211,172,92,0.2), transparent 60%), linear-gradient(160deg, var(--navy-800), var(--navy-950));
-    display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; padding:22px;
-    position:relative;
+    aspect-ratio:1/1; border:1px solid var(--line); position:relative; overflow:hidden;
+    background-image:radial-gradient(circle at 50% 30%, rgba(211,172,92,0.2), transparent 60%), linear-gradient(160deg, var(--navy-800), var(--navy-950));
   }
-  .pod-cover::before{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(0deg, rgba(5,7,13,0.82) 0%, rgba(5,7,13,0) 55%);
-  }
-  .pod-cover .cover-tag{position:relative; font-family:var(--serif); font-size:20px; color:var(--gold-300); letter-spacing:0.02em;}
-  .pod-cover .cover-sub{position:relative; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted-soft); margin-top:6px;}
   .pod-ep .meta-line{font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-400); font-weight:600; margin-bottom:12px;}
   .pod-ep h3{font-size:26px; margin-bottom:10px;}
   .pod-ep p{font-size:14.5px; max-width:32ch;}
@@ -280,8 +273,8 @@
   .news-status{font-size:13.5px; color:var(--gold-300); min-height:18px;}
   .news-explore{margin-top:22px; display:inline-block;}
   .news-visual{
-    min-height:420px; border:1px solid var(--line-soft);
-    background-image:url('newsletter-visual.jpg'), radial-gradient(circle at 70% 30%, rgba(211,172,92,0.14), transparent 60%), linear-gradient(160deg, var(--navy-850), var(--navy-950));
+    min-height:420px; border:1px solid var(--line-soft); overflow:hidden;
+    background-image:radial-gradient(circle at 70% 30%, rgba(211,172,92,0.14), transparent 60%), linear-gradient(160deg, var(--navy-850), var(--navy-950));
     display:flex; align-items:center; justify-content:center; position:relative;
   }
 
@@ -331,7 +324,7 @@
 <header>
   <div class="header-inner">
     <a href="#top" class="brand">
-      <img src="icon_small.png" alt="Mind Anchor emblem">
+      <img src="assets/icon_small.png" alt="Mind Anchor emblem">
       <span>Mind.Anchor</span>
     </a>
     <nav class="socials">
@@ -374,7 +367,7 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="hero-visual"></div>
+      <div class="hero-visual"><img class="img-fit" src="assets/hero-visual.jpg" alt="Mind Anchor — atmospheric hero artwork"></div>
     </div>
   </section>
 
@@ -428,7 +421,8 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="feature-visual has-image img-slot" style="background-image:url('articles-current-series.jpg');">
+      <div class="feature-visual has-image">
+        <img class="img-fit" src="assets/articles-current-series.jpg" alt="Confidence Through Evidence — current series artwork">
         <div class="tag">Current Series — Confidence Through Evidence</div>
         <h3>Underconfidence Restricts Action</h3>
         <p>Exploring how underconfidence quietly limits the actions we're willing to take — and how evidence, not reassurance, is what rebuilds it.</p>
@@ -531,9 +525,8 @@
         </div>
       </div>
       <div class="pod-cover">
-        <div class="cover-tag">MIND ANCHOR</div>
-        <div class="cover-sub">Podcast</div>
-        <!-- Drop your real cover art at assets/podcast-cover.jpg — it layers over this label automatically. -->
+        <img class="img-fit" src="assets/podcast-cover.jpg" alt="Mind Anchor Podcast cover art">
+        <!-- Real cover art in place at assets/podcast-cover.jpg -->
       </div>
       <div class="pod-ep">
         <div class="meta-line">Latest Episode</div>
@@ -627,7 +620,7 @@
         <p>Mind Anchor began with a simple curiosity about what lies beneath the surface of everyday life. I'm building it as a space to ask better questions, make invisible patterns visible, and understand before we explain.</p>
       </div>
       <div class="founder-right">
-        <img class="founder-photo" src="founder_edit.jpg" alt="Jai, Founder of Mind Anchor">
+        <img class="founder-photo" src="assets/founder_edit.jpg" alt="Jai, Founder of Mind Anchor">
         <div class="founder-card">
           <div class="name">Jai</div>
           <div class="role">Founder, Mind Anchor</div>
@@ -659,7 +652,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="news-visual img-slot"></div>
+      <div class="news-visual"><img class="img-fit" src="assets/newsletter-visual.jpg" alt="Anchored Intelligence — editorial artwork"></div>
     </div>
   </section>
 
